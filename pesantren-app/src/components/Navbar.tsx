@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, BookOpen, LogOut } from 'lucide-react';
+import { Menu, X, BookOpen, LogOut, Globe } from 'lucide-react';
 import { useAuth } from '../AuthContext';
+import { useLanguage } from '../LanguageContext';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     navigate('/');
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'id' ? 'en' : 'id');
   };
 
   return (
@@ -29,17 +35,22 @@ const Navbar: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-700 hover:text-sage-600 transition-colors">
-              Beranda
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-sage-600 transition-colors">
-              Tentang
+              {t('nav.home')}
             </Link>
             <Link to="/programs" className="text-gray-700 hover:text-sage-600 transition-colors">
-              Program
+              {t('nav.programs')}
             </Link>
             <Link to="/admissions" className="text-gray-700 hover:text-sage-600 transition-colors">
-              Pendaftaran
+              {t('nav.admissions')}
             </Link>
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-1 text-gray-700 hover:text-sage-600 transition-colors"
+              title="Change Language"
+            >
+              <Globe className="h-4 w-4" />
+              <span className="text-sm">{language.toUpperCase()}</span>
+            </button>
             
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
@@ -63,7 +74,7 @@ const Navbar: React.FC = () => {
                 to="/login"
                 className="bg-sage-600 text-white px-4 py-2 rounded-lg hover:bg-sage-700 transition-colors"
               >
-                Login
+                {t('nav.login')}
               </Link>
             )}
           </div>
