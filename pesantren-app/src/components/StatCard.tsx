@@ -1,13 +1,13 @@
-import React from 'react';
+import type { FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface StatCardProps {
   number: string;
   label: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ number, label, icon }) => {
+const StatCard: FC<StatCardProps> = ({ number, label, icon }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

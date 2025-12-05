@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BookOpen, Users, Award, Globe2, GraduationCap, Heart, Building2, Trophy } from 'lucide-react';
@@ -6,7 +6,7 @@ import { useLanguage } from '../LanguageContext';
 import Button from '../components/Button';
 import StatCard from '../components/StatCard';
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   const { t } = useLanguage();
 
   const programs = [

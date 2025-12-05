@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, BookOpen, LogOut, Globe } from 'lucide-react';
 import { useAuth } from '../AuthContext';
 import { useLanguage } from '../LanguageContext';
 
-const Navbar: React.FC = () => {
+const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
   const { language, setLanguage, t } = useLanguage();

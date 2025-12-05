@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FC, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import Button from '../components/Button';
 import type { AdmissionForm } from '../types';
 
-const Admissions: React.FC = () => {
+const Admissions: FC = () => {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState<AdmissionForm>({
@@ -20,12 +21,12 @@ const Admissions: React.FC = () => {
     message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setSubmitted(true);

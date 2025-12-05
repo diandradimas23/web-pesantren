@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import type { ReactNode } from 'react';
+import { createContext, useContext, useState } from 'react';
+import type { ReactNode, FC } from 'react';
 import type { User, UserRole, AuthContextType } from './types';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,7 +35,7 @@ const mockUsers: Record<string, { password: string; user: User }> = {
   },
 };
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const login = async (email: string, password: string, role: UserRole) => {

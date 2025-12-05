@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FC, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { UserCircle, Lock, ArrowLeft } from 'lucide-react';
@@ -7,7 +8,7 @@ import { useLanguage } from '../LanguageContext';
 import type { UserRole } from '../types';
 import Button from '../components/Button';
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +25,7 @@ const Login: React.FC = () => {
     { value: 'parent', label: t('login.parent'), color: 'from-green-500 to-green-700' },
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!selectedRole) return;
 

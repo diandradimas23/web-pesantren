@@ -1,11 +1,11 @@
-import React from 'react';
+import type { FC } from 'react';
 import { Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../AuthContext';
 import { useLanguage } from '../LanguageContext';
 import { Users, BookOpen, Bell, Settings, BarChart3, Calendar, FileText, Award } from 'lucide-react';
 
-const Dashboard: React.FC = () => {
+const Dashboard: FC = () => {
   const { user, isAuthenticated } = useAuth();
   const { t } = useLanguage();
 
